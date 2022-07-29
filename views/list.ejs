@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
+  <body>
+
+    <div class="box" id="heading">
+      <h2><%= day %></h2>
+      <h1><%= title %></h1>
+    </div>
+
+    <div class="box">
+
+        <% docs.forEach(function(item){ %>
+          <form action="/delete" method="post">
+            <div class="item">
+              <input type="checkbox" name="checkbox" value="<%=item._id%>" onchange="this.form.submit()">
+              <p><%= item.name%></p>
+            </div>
+            <input type="hidden" name="listName" value="<%= title %>"></input>
+          </form>
+        <% }); %>
+        <form class="item" action="/" method="post">
+          <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+          <button type="submit" name="listName" value="<%= title %>">+</button>
+        </form>
+    </div>
+
+  <footer>
+    <p>
+      Made by YashwantPatil
+    </p>
+  </footer>
+  </body>
+</html>
